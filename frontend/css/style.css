@@ -117,7 +117,7 @@ body {
   font-size: 2rem;
   color: #d0d0d0;
   width: 2em;
-  
+
 }
 
 .ja_nee_button:hover {
@@ -180,7 +180,10 @@ body {
 
 }
 
-a, a:hover, a:focus, a:active {
+a,
+a:hover,
+a:focus,
+a:active {
   text-decoration: none;
   color: inherit;
 }
@@ -540,4 +543,56 @@ i {
   .card {
     width: 100%;
   }
+}
+
+
+
+
+/* contact pagina */
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  background-color: rgb(45, 45, 45);
+}
+
+.contact h2 {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.contact p,
+a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(45, 45, 45);
+}
+
+#form>input {
+  width: 350%;
+  height: 2rem;
+  margin: 1rem;
+  border-radius: 5px;
+  border: none;
+  padding: 0.5rem;
+  background-color: rgb(200, 198, 198);
 }
