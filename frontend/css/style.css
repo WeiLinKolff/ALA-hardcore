@@ -24,7 +24,7 @@ body {
 .nav>a {
   color: rgba(255, 255, 255, 0.25);
   font-family: 'hero';
-  font-size: 8rem;
+  font-size: clamp(1rem, 1.5rem + 8vw, 8rem);
   font-weight: 300;
   text-decoration: none;
   position: relative;
@@ -140,7 +140,7 @@ body {
   padding-top: 8vh;
 
 
-  color: rgb(27, 27, 27);
+  color: #1c1c1c;
   font-size: 50pt;
   font-family: "hero";
   font-weight: 400;
@@ -558,7 +558,7 @@ i {
   height: 100vh;
   width: 100vw;
   color: white;
-  background-color: rgb(45, 45, 45);
+  background-color: #1c1c1c;
 }
 
 .contact h2 {
@@ -568,10 +568,13 @@ i {
 }
 
 .contact p,
-a {
-  color: #fff;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+h3 {
+  color: rgba(255, 255, 255, 0.25);
+  font-family: 'hero';
+  font-size: 4rem;
+  font-weight: 300;
+  text-decoration: none;
+  position: relative;
 }
 
 .contact a:hover {
@@ -584,15 +587,26 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(45, 45, 45);
+  background-color: #1c1c1c;
 }
 
-#form>input {
-  width: 350%;
+#contact_input {
+  width:clamp(300px,30vw,1080px);
   height: 2rem;
   margin: 1rem;
   border-radius: 5px;
-  border: none;
+  border: solid #ffffff40;
   padding: 0.5rem;
-  background-color: rgb(200, 198, 198);
+  background-color: rgba(200, 198, 198, 0);
+  color: white;
+}
+
+#contact_submit {
+  width:clamp(120px,10vw,600px);
+  margin: 1rem;
+  border-radius: 5px;
+  border: solid rgba(255, 255, 255, 0.25);
+  padding: 0.5rem;
+  background-color: rgba(200, 198, 198, 0);
+  color: white;
 }

@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/officegen@0.5.1/dist/officegen.min.js"></script>
-    <script src="automatisch.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Make sure to include the correct path to the jsPDF library -->
+  <script src="automatisch.js" type='module'defer></script>
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 
 <body>
     
-    <div id="file-drop-box">
-        Drag and drop a Word or PDF file here
-    </div>
+    <div id="drop-zone">
+        <h3>Drop Word or PDF file here</h3>
+      </div>
+      <pre id="content-display"></pre>
 
 </body>
 

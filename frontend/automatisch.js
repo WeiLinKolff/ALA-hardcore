@@ -1,46 +1,52 @@
-const officegen = require('officegen')
+// automatisch.js
 
-const fileDropBox = document.getElementById('file-drop-box');
-        
-        // Add event listeners for drag events
-        fileDropBox.addEventListener('dragover', handleDragOver, false);
-        fileDropBox.addEventListener('dragleave', handleDragLeave, false);
-        fileDropBox.addEventListener('drop', handleDrop, false);
-        
-        function handleDragOver(event) {
-            event.preventDefault();
-            fileDropBox.style.backgroundColor = 'lightgray';
-        }
-        
-        function handleDragLeave(event) {
-            event.preventDefault();
-            fileDropBox.style.backgroundColor = '';
-        }
-        
-        function handleDrop(event) {
-            event.preventDefault();
-            fileDropBox.style.backgroundColor = '';
-            
-            const files = event.dataTransfer.files;
-            if (files.length > 0) {
-                const wordFile = files[0];
-                
-                // Read the binary data from the dropped Word file
-                const fileReader = new FileReader();
-                fileReader.onload = function (event) {
-                    // Parse the Word file data
-                    const wordFileData = event.target.result;
-                    const officegen = require('officegen');
-                    const docx = officegen('docx');
-                    const body = docx.createP();
-                    body.addText(docx.getBody().getContentAsText());
-                    
-                    // Generate a download link for the converted Word file
-                    const downloadLink = document.createElement('a');
-                    downloadLink.href = window.URL.createObjectURL(docx.generate({ type: 'blob' }));
-                    downloadLink.download = 'converted_word_file.docx';
-                    downloadLink.click();
-                };
-                fileReader.readAsArrayBuffer(wordFile);
-            }
-        }
+// Dynamically load the jsPDF library
+var script = document.createElement('script');
+script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+script.onload = function() {
+  // Code to be executed after the jsPDF library is loaded
+  var dropZone = document.getElementById('drop-zone');
+  
+    // Prevent the default behavior of drop events
+    dropZone.addEventListener('dragover', function(event) {
+      event.preventDefault();
+    });
+  
+    // Handle the drop event
+    dropZone.addEventListener('drop', function(event) {
+      event.preventDefault();
+  
+      // Get the dropped file   
+      var file = event.dataTransfer.files[0];
+  
+      // Create a new FileReader object
+      var fileReader = new FileReader();
+  
+      // Define onload event handler for when the file is loaded
+      fileReader.onload = function(event) {
+        // Get the loaded content as an ArrayBuffer
+        var arrayBuffer = event.target.result;
+  
+        // Create a new jsPDF object
+        var pdf = new jsPDF();
+  
+        // Load the ArrayBuffer into the jsPDF object
+        pdf.loadDocument(arrayBuffer);
+  
+        // Extract text from the PDF
+        var extractedText = pdf.extractText();
+  
+        // Print the extracted text
+        console.log(extractedText);
+      };
+  
+      // Read the file as an ArrayBuffer
+      fileReader.readAsArrayBuffer(file);
+    });
+  // Use the jsPDF object as needed
+};
+document.head.appendChild(script);
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+  });
